@@ -83,6 +83,7 @@ public class IntQueueTest {
     @Test
     public void testDequeue() {
         // TODO: write your own unit test
+        assertNull(mQueue.dequeue());
         for (Integer integer : testList) {
             mQueue.enqueue(integer);
         }
@@ -91,6 +92,24 @@ public class IntQueueTest {
             assertEquals(testList.get(i), element);
             assertEquals(testList.size() - i - 1, mQueue.size());
         }
+    }
+
+    @Test
+    public void testClear() {
+        // TODO: write your own unit test
+        mQueue.clear();
+        assertTrue(mQueue.isEmpty());
+        mQueue.enqueue(1);
+        assertFalse(mQueue.isEmpty());
+    }
+
+    @Test
+    public void testEnsureCapacity() {
+        // TODO: write your own unit test
+        for (int i = 0; i < 100; i++) {
+            mQueue.enqueue(i);
+        }
+        assertEquals(100, mQueue.size());
     }
 
     @Test
